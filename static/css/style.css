@@ -1,0 +1,125 @@
+:root {
+    --primary-color: #6f42c1;
+    --secondary-color: #fd7e14;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card .btn {
+    margin-top: auto;
+}
+
+.emotion-indicator {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin: 2px;
+}
+
+.emotion-happy { background-color: #fff3cd; color: #856404; }
+.emotion-calm { background-color: #d1ecf1; color: #0c5460; }
+.emotion-energetic { background-color: #d4edda; color: #155724; }
+.emotion-confident { background-color: #e2e3e5; color: #383d41; }
+.emotion-peaceful { background-color: #f8d7da; color: #721c24; }
+
+.recommendation-card {
+    border-left: 4px solid var(--primary-color);
+}
+
+.confidence-score {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.search-result-item {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.similarity-score {
+    background: var(--info-color);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+}
+
+.btn-emotion {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-emotion:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 1rem !important;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+}
