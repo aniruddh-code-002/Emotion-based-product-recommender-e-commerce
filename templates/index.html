@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="hero-section bg-gradient text-white rounded p-5 mb-5">
+            <h1 class="display-4">Find Products That Match Your Mood</h1>
+            <p class="lead">Our AI-powered recommendation system understands your emotions and suggests products that truly resonate with how you feel.</p>
+            
+            <!-- Emotion Input Section -->
+            <div class="card mt-4 bg-white text-dark">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-chat-heart"></i> How are you feeling today?
+                    </h5>
+                    <div class="mb-3">
+                        <textarea id="moodInput" class="form-control" rows="3" 
+                                placeholder="Tell us about your mood, what you're looking for, or how you're feeling..."></textarea>
+                    </div>
+                    <button id="analyzeMoodBtn" class="btn btn-primary">
+                        <i class="bi bi-magic"></i> Get Personalized Recommendations
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recommendations Section -->
+<div id="recommendationsSection" class="row" style="display: none;">
+    <div class="col-12">
+        <h2><i class="bi bi-stars"></i> Your Personalized Recommendations</h2>
+        <div id="sentimentAnalysis" class="alert alert-info mb-4"></div>
+        <div id="recommendationsList" class="row"></div>
+    </div>
+</div>
+
+<!-- Search Section -->
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="bi bi-search-heart"></i> Smart Product Search</h3>
+            </div>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <input type="text" id="searchInput" class="form-control" 
+                           placeholder="Search for products... (e.g., 'something to help me relax after work')">
+                    <button id="searchBtn" class="btn btn-outline-primary">
+                        <i class="bi bi-search"></i> Search
+                    </button>
+                </div>
+                <div id="searchResults"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- All Products Section -->
+<div class="row mt-5" id="products">
+    <div class="col-12">
+        <h2><i class="bi bi-grid"></i> All Products</h2>
+        <div id="productsList" class="row">
+            <div class="col-12 text-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product Modal -->
+<div class="modal fade" id="productModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Product details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="addToCartBtn">
+                    <i class="bi bi-cart-plus"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Load all products on page load
+    loadAllProducts();
+    
+    // Set up event listeners
+    document.getElementById('analyzeMoodBtn').addEventListener('click', analyzeMoodAndRecommend);
+    document.getElementById('searchBtn').addEventListener('click', performSearch);
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+});
+</script>
+{% endblock %}
