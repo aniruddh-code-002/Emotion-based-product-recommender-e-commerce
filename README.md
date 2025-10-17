@@ -1,7 +1,7 @@
 # Emotion-based-product-recommender-e-commerce
 An AI powered Full Stack web app that utilizes the gemini API to fetch and testblob python library to recommend products based on how you are feeling
 
-Link To the video explanation-
+Link To the video explanation- To be added soon in progress
 
 install all the required libraries listed in requirements.txt file
 
